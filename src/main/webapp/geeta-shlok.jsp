@@ -12,24 +12,23 @@
 
     <style>
         body {
-            background: linear-gradient(to bottom, #7a0d0d, #3d0202);
-            color: white;
-            text-align: center;
+            background: #f8f9fa;
+            color: #212529;
         }
         .shlok-container {
             margin: 50px auto;
-            max-width: 700px;
+            max-width: 800px;
         }
         .shlok-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: #fff;
             padding: 15px;
             border-radius: 10px;
-            border: 2px solid #e65100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 10px 0;
         }
         .shlok-card a {
             text-decoration: none;
-            color: white;
+            color: #e65100;
             font-weight: bold;
             font-size: 1.2rem;
         }
@@ -44,17 +43,18 @@
         int adhyay = Integer.parseInt(request.getParameter("adhyay"));
     %>
 
-    <h1 class="mt-4">📜 Shlokas from Adhyay <%= adhyay %></h1>
-
-    <div class="shlok-container">
-        <% for(int i = 1; i <= 10; i++) { %>
-            <div class="shlok-card">
-                <a href="geeta-shloka-details.jsp?adhyay=<%= adhyay %>&shlok=<%= i %>">श्लोक: <%= i %></a>
-            </div>
-        <% } %>
+    <div class="container mt-4">
+        <h1 class="text-center">📜 Shlokas from Adhyay <%= adhyay %></h1>
+        <div class="shlok-container">
+            <% for(int i = 1; i <= 10; i++) { %>
+                <div class="shlok-card">
+                    <a href="geeta-shloka-details.jsp?adhyay=<%= adhyay %>&shlok=<%= i %>">VERSE <%= i %></a>
+                    <p class="mt-2 text-muted">This is a placeholder for the shloka content.</p>
+                </div>
+            <% } %>
+        </div>
     </div>
-<%@ include file="footer.jsp" %>
 
-
+    <%@ include file="footer.jsp" %>
 </body>
 </html>
