@@ -17,13 +17,6 @@
     <!-- Include Navbar -->
     <%@ include file="navbar.jsp" %>
 
-    <!-- Hero Section -->
-    <div class="hero-section">
-        <div class="container">
-            <h1>About Us</h1>
-            <p>Learn more about our mission and our team</p>
-        </div>
-    </div>
 
     <!-- About Section -->
     <div class="container about-section">
@@ -38,7 +31,7 @@
             <!-- Team Member 1 -->
             <div class="col-md-4">
                 <div class="team-card">
-                    <img src="img/person1.jpg" alt="Rahul Sharma">
+                    <img src="img/user2.jpg" alt="Rahul Sharma">
                     <h5>Rahul Sharma</h5>
                     <p>Founder & Developer</p>
                 </div>
@@ -46,7 +39,7 @@
             <!-- Team Member 2 -->
             <div class="col-md-4">
                 <div class="team-card">
-                    <img src="img/person2.jpg" alt="Priya Patel">
+                    <img src="img/user1.jpg" alt="Priya Patel">
                     <h5>Priya Patel</h5>
                     <p>Content Creator</p>
                 </div>
@@ -54,7 +47,7 @@
             <!-- Team Member 3 -->
             <div class="col-md-4">
                 <div class="team-card">
-                    <img src="img/person3.jpg" alt="Amit Verma">
+                    <img src="img/user3.jpg" alt="Amit Verma">
                     <h5>Amit Verma</h5>
                     <p>Graphic Designer</p>
                 </div>

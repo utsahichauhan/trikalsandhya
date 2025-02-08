@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
     <style>
         
         .chapter-card {
@@ -40,7 +40,7 @@
     <div class="container text-center">
         <h1 class="mb-4">Adhyay (Chapters)</h1>
         <div class="box-container">
-            <% for(int i=1; i<=9; i++) { %>
+            <% for(int i=1; i<=20; i++) { %>
                 <a href="shloka.jsp?chapter=<%= i %>" class="text-decoration-none">
                     <div class="chapter-card shadow-lg">
                         अध्याय: <%= i %>
@@ -49,7 +49,7 @@
             <% } %>
         </div>
     </div>
-
+<br>
     <%@ include file="footer.jsp" %>
 
 </body>

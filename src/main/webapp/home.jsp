@@ -23,6 +23,32 @@
             padding: 10px;
             border-radius: 5px;
         }
+        /* Card size adjustment */
+.card {
+    width: 100%;  /* Ensure the card takes up 100% width of its container */
+    max-width: 300px;  /* Set a maximum width for the card */
+    margin: 0 auto;  /* Center the cards within their column */
+    height: 450px;  /* Set a fixed height for cards */
+}
+
+.card-img-top {
+    height: 200px;  /* Fixed height for images */
+    object-fit: cover;  /* Ensure images cover the area without stretching */
+}
+
+/* Adjust card body layout for consistent height */
+.card-body {
+    height: 200px;  /* Set a fixed height for the card body */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* Ensure space between card title and button */
+}
+
+/* Optional: Set a specific size for buttons */
+.card .btn {
+    width: 100%;
+}
+        
     </style>
 </head>
 <body>
@@ -39,21 +65,21 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/bg.png" class="d-block w-100" alt="Slide 1">
+                <img src="img/2.jpg" class="d-block w-100" alt="Slide 1">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Explore Ramayan</h5>
                     <p>Discover the life and teachings of Lord Rama.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/bg2.png" class="d-block w-100" alt="Slide 2">
+                <img src="img/1.jpg" class="d-block w-100" alt="Slide 2">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Explore Geeta</h5>
                     <p>Learn the teachings of Lord Krishna in the Bhagavad Gita.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/geeta1.png" class="d-block w-100" alt="Slide 3">
+                <img src="img/3.jpg" class="d-block w-100" alt="Slide 3">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Explore Mahabharat</h5>
                     <p>Uncover the wisdom from the epic battle of Kurukshetra.</p>

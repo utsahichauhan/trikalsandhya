@@ -16,13 +16,6 @@
     <!-- Include Navbar -->
     <%@ include file="navbar.jsp" %>
 
-    <!-- Hero Section -->
-    <div class="hero-section">
-        <div>
-            <h1>Ramayan</h1>
-            <p>Explore the sacred teachings and stories of Ramayan</p>
-        </div>
-    </div>
 
     <!-- Content Section -->
     <div class="container content-section">

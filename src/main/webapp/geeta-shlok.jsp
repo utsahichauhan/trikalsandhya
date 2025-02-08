@@ -9,12 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
     <style>
-        body {
-            background: #f8f9fa;
-            color: #212529;
-        }
         .shlok-container {
             margin: 50px auto;
             max-width: 800px;
