@@ -121,7 +121,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Geeta</h5>
                         <p class="card-text">Understand the deep wisdom of the Bhagavad Gita and how it relates to life's struggles and choices.</p>
-                        <a href="mahabharat.jsp" class="btn btn-outline-primary">Read More</a>
+                        <a href="geeta.jsp" class="btn btn-outline-primary">Read More</a>
                     </div>
                 </div>
             </div>
