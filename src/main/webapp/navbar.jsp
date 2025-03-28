@@ -2,14 +2,19 @@
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 
 <%
-    HttpSession userSession = request.getSession(false);
-    String username = (userSession != null) ? (String) userSession.getAttribute("username") : null;
+    // Remove duplicate session variables
+    if (session.getAttribute("username") == null) {
+        session.setAttribute("username", "Guest"); // Default value if not logged in
+    }
+
+    String username = (String) session.getAttribute("username");
+    String userEmail = (String) session.getAttribute("userEmail");
 %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="home.jsp">Trikalsandhya</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,7 +27,7 @@
                 <li class="nav-item"><a class="nav-link" href="about.jsp">About Us</a></li>
 
                 <%
-                    if (username != null) {
+                    if (!"Guest".equals(username)) {
                 %>
                     <!-- If logged in, show username and logout -->
                     <li class="nav-item">
@@ -34,7 +39,6 @@
                 <%
                     } else {
                 %>
-                    <!-- If not logged in, show Login link -->
                     <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
                 <%
                     }

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shloka - Ramayan</title>
+    <title>Shloka - Vanvas</title>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
     <%@ include file="navbar.jsp" %>
 
     <div class="container shloka-container">
-        <h2>📜 Shlokas from Adhyay <%= request.getParameter("chapter") %></h2>
+        <h2>📜 Vanvas Shlokas from Adhyay <%= request.getParameter("chapter") %></h2>
 
         <%
             int chapter = Integer.parseInt(request.getParameter("chapter"));
@@ -54,7 +54,7 @@
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trikalsandhya", "root", "");
 
-                String query = "SELECT * FROM shlokas WHERE adhyay_number = ?";
+                String query = "SELECT * FROM shlokas WHERE category='Vanvas' AND adhyay_number=?";
                 PreparedStatement ps = con.prepareStatement(query);
                 ps.setInt(1, chapter);
                 ResultSet rs = ps.executeQuery();

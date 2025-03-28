@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramayan</title>
+    <title>Vanvas - Ramayan</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,10 +38,10 @@
     <%@ include file="navbar.jsp" %>
 
     <div class="container text-center">
-        <h1 class="mb-4">Adhyay (Chapters)</h1>
+        <h1 class="mb-4">Vanvas Adhyay (Chapters)</h1>
         <div class="box-container">
             <% for(int i=1; i<=20; i++) { %>
-                <a href="shloka.jsp?chapter=<%= i %>" class="text-decoration-none">
+                <a href="shloka_vanvas.jsp?chapter=<%= i %>" class="text-decoration-none">
                     <div class="chapter-card shadow-lg">
                         अध्याय: <%= i %>
                     </div>

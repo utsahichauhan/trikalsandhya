@@ -1,100 +1,163 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
+
+<%
+    HttpSession userSession = request.getSession(false);
+    String username = (userSession != null) ? (String) userSession.getAttribute("username") : null;
+    String userEmail = (userSession != null) ? (String) userSession.getAttribute("userEmail") : null;
+    String success = request.getParameter("success"); // Get the 'success' parameter from URL
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
-    
     <style>
-        /* Contact Section */
-        .contact-section {
-            background: url('img/contact-bg.jpg') center/cover no-repeat;
-            padding: 100px 20px;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-        .contact-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        .contact-section h1, .contact-section p {
-            position: relative;
-            z-index: 1;
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Form Section */
-        .contact-form {
-            background: white;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: -50px;
-            position: relative;
         }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .col-md-6 {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 95%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+        }
+
         .btn-custom {
-            background-color: #007bff;
+            background-color: #4CAF50;
             color: white;
-            padding: 10px;
-            border-radius: 5px;
-            transition: 0.3s;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
         }
+
         .btn-custom:hover {
-            background-color: #0056b3;
+            background-color: #45a049;
         }
-        
-        /* Custom Placeholder Color */
-        ::placeholder {
-            color: #555 !important;
-            opacity: 1; /* Ensure placeholder is fully visible */
+
+        .btn-custom:active {
+            background-color: #388e3c;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+            font-size: 16px;
+        }
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
+
+    <script>
+        window.onload = function() {
+            var success = "<%= success != null ? success : "" %>";
+            var toast = document.getElementById('toast');
+
+            // Check if 'success' parameter is 'true' and show the toast
+            if (success === 'true') {
+                toast.classList.add('show'); // Add the 'show' class to display the toast
+                // After 3 seconds, hide the toast
+                setTimeout(function() {
+                    toast.classList.remove('show');
+                }, 6000);
+                window.location.href = "home.jsp";
+            }
+        }
+    </script>
 </head>
+
 <body>
 
-    <!-- Include Navbar -->
-    <%@ include file="navbar.jsp" %>
-
-    <!-- Contact Hero Section -->
-    <div class="contact-section">
-        <div class="container">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
             <h1>Contact Us</h1>
-            <p>Have any questions? Reach out to us, and we'll get back to you as soon as possible!</p>
-        </div>
-    </div>
 
-    <!-- Contact Form Section -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form class="contact-form">
+            <% 
+                // Check if username or userEmail is null
+                if (username == null || userEmail == null || username.equals("") || userEmail.equals("")) {
+            %>
+                <div class="alert alert-danger text-center">Please <a href="login.jsp">login</a> to contact us.</div>
+            <%
+                } else {
+            %>
+                <form class="contact-form" action="ContactServlet" method="POST">
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Your Name" required>
+                        <input type="text" class="form-control" name="name" value="<%= username %>" readonly>
                     </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="Your Email" required>
+                        <input type="email" class="form-control" name="email" value="<%= userEmail %>" readonly>
                     </div>
                     <div class="mb-3">
-                        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                        <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-custom w-100">Send Message</button>
+                    <button type="submit" class="btn-custom w-100">Send Message</button>
                 </form>
-            </div>
+            <%
+                }
+            %>
         </div>
     </div>
-
-    <%@ include file="footer.jsp" %>
+</div>
+<div id="toast" class="toast">
+    <strong>Success!</strong> Your message has been sent successfully.
+</div>
 
 </body>
 </html>

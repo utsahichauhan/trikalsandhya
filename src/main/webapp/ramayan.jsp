@@ -16,7 +16,6 @@
     <!-- Include Navbar -->
     <%@ include file="navbar.jsp" %>
 
-
     <!-- Content Section -->
     <div class="container content-section">
         <h2 class="text-center mb-4">Chapters of Ramayan</h2>
