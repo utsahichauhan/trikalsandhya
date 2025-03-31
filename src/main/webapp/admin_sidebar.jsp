@@ -4,13 +4,13 @@
         <h4 class="text-center">Admin Panel</h4>
         <a href="admin_user.jsp">User</a>
         <a href="admin_settings.jsp">System Settings</a>
-        <a href="#ramayan-slok">Ramayan Slok</a>
+        <a href="add_shlok.jsp">Ramayan Slok</a>
         <a href="#geeta-slok">Geeta Slok</a>
     </div>
     <div class="profile-section">
         <img src="img/user1.jpg" alt="Profile Picture">
         <span>Admin</span>
-        <a href="#logout" style="color: red;">Logout</a>
+        <a href="logout.jsp" style="color: red;">Logout</a>
     </div>
 </div>
 
