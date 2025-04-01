@@ -54,7 +54,7 @@
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trikalsandhya", "root", "");
 
-                String query = "SELECT * FROM shlokas WHERE adhyay_number = ?";
+                String query = "SELECT * FROM shlokas WHERE category='Ram-Seeta Milan' AND adhyay_number=?";
                 PreparedStatement ps = con.prepareStatement(query);
                 ps.setInt(1, chapter);
                 ResultSet rs = ps.executeQuery();

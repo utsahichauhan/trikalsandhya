@@ -15,14 +15,7 @@
         .container-fluid {
             display: flex;
         }
-        .sidebar {
-            width: 250px;
-            background: #343a40;
-            color: white;
-            padding: 15px;
-            height: 100vh;
-            position: fixed;
-        }
+        
         .content {
             margin-left: 260px;
             padding: 20px;
