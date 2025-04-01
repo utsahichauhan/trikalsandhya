@@ -32,7 +32,7 @@
             <div class="col-md-4">
                 <div class="team-card">
                     <img src="img/user2.jpg" alt="Rahul Sharma">
-                    <h5>Rahul Sharma</h5>
+                    <h5>Akshay Karan</h5>
                     <p>Founder & Developer</p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             <div class="col-md-4">
                 <div class="team-card">
                     <img src="img/user1.jpg" alt="Priya Patel">
-                    <h5>Priya Patel</h5>
+                    <h5>Utsahi Chauhan</h5>
                     <p>Content Creator</p>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="col-md-4">
                 <div class="team-card">
                     <img src="img/user3.jpg" alt="Amit Verma">
-                    <h5>Amit Verma</h5>
+                    <h5>Fulnaj Khatoon</h5>
                     <p>Graphic Designer</p>
                 </div>
             </div>
