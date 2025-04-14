@@ -5,7 +5,7 @@
         <a href="admin_user.jsp">User</a>
         <a href="admin_settings.jsp">System Settings</a>
         <a href="add_shlok.jsp">Ramayan Slok</a>
-        <a href="#geeta-slok">Geeta Slok</a>
+        <a href="add_shloka.jsp">Geeta Slok</a>
     </div>
     <div class="profile-section">
         <img src="img/user1.jpg" alt="Profile Picture">

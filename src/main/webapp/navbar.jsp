@@ -2,13 +2,12 @@
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 
 <%
-    // Remove duplicate session variables
+    // Ensure the session contains a username. If not, set it to "Guest".
     if (session.getAttribute("username") == null) {
-        session.setAttribute("username", "Guest"); // Default value if not logged in
+        session.setAttribute("username", "Guest");
     }
 
     String username = (String) session.getAttribute("username");
-    String userEmail = (String) session.getAttribute("userEmail");
 %>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -35,6 +34,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-danger" href="logout.jsp">Logout</a>
+                    </li>
+                    <!-- Add "Update Profile" button if logged in -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="update-profile.jsp">Update Profile</a>
                     </li>
                 <%
                     } else {

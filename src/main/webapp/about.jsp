@@ -33,7 +33,7 @@
                 <div class="team-card">
                     <img src="img/user2.jpg" alt="Rahul Sharma">
                     <h5>Akshay Karan</h5>
-                    <p>Founder & Developer</p>
+                    <p>Content Creator</p>
                 </div>
             </div>
             <!-- Team Member 2 -->
@@ -41,13 +41,13 @@
                 <div class="team-card">
                     <img src="img/user1.jpg" alt="Priya Patel">
                     <h5>Utsahi Chauhan</h5>
-                    <p>Content Creator</p>
+                    <p>Founder & Developer</p>
                 </div>
             </div>
             <!-- Team Member 3 -->
             <div class="col-md-4">
                 <div class="team-card">
-                    <img src="img/user3.jpg" alt="Amit Verma">
+                    <img src="img/user1.jpg" alt="Amit Verma">
                     <h5>Fulnaj Khatoon</h5>
                     <p>Graphic Designer</p>
                 </div>
