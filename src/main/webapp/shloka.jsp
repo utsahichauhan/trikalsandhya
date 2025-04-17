@@ -37,6 +37,11 @@
             padding: 15px;
             border-radius: 10px;
         }
+        .btn-nav {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -45,11 +50,15 @@
     <%@ include file="navbar.jsp" %>
 
     <div class="container shloka-container">
-        <h2>📜 Shlokas from Adhyay <%= request.getParameter("chapter") %></h2>
+        <%
+            int chapter = 1;
+            if (request.getParameter("chapter") != null) {
+                chapter = Integer.parseInt(request.getParameter("chapter"));
+            }
+        %>
+        <h2>📜 Shlokas from Adhyay <%= chapter %></h2>
 
         <%
-            int chapter = Integer.parseInt(request.getParameter("chapter"));
-
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trikalsandhya", "root", "");
@@ -72,7 +81,22 @@
             } catch (Exception e) {
                 out.println("<h3>Error: " + e.getMessage() + "</h3>");
             }
+
+            int previousChapter = chapter - 1;
+            int nextChapter = chapter + 1;
         %>
+
+        <!-- Previous and Next Buttons -->
+        <div class="d-flex justify-content-between mt-4">
+            <a href="shloka.jsp?chapter=<%= previousChapter %>" 
+               class="btn btn-warning btn-nav <%= (chapter <= 1) ? "disabled" : "" %>">
+               ⬅️ Previous
+            </a>
+            <a href="shloka.jsp?chapter=<%= nextChapter %>" 
+               class="btn btn-success btn-nav">
+               Next ➡️
+            </a>
+        </div>
     </div>
 
     <%@ include file="footer.jsp" %>

@@ -40,9 +40,9 @@ public class AddShlokServlet extends HttpServlet {
             con.close();
 
             if (rowsInserted > 0) {
-                response.sendRedirect("add_shloka.jsp?success=Shloka Added Successfully");
+                response.sendRedirect("add_shlok.jsp?success=Shloka Added Successfully");
             } else {
-                response.sendRedirect("add_shloka.jsp?error=Failed to Add Shloka");
+                response.sendRedirect("add_shlok.jsp?error=Failed to Add Shloka");
             }
 
         } catch (Exception e) {

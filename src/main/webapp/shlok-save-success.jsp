@@ -30,7 +30,7 @@
     <div class="success-box">
         <h1>✅ Shloka Saved Successfully!</h1>
         <p>You have successfully added a new shloka to the Bhagavad Geeta.</p>
-        <a href="add-shlok.jsp" class="btn btn-primary mt-3">➕ Add Another Shloka</a>
+        <a href="add_shlok.jsp" class="btn btn-primary mt-3">➕ Add Another Shloka</a>
         <a href="geeta.jsp" class="btn btn-secondary mt-3">📖 Back to Geeta Page</a>
     </div>
 </body>
