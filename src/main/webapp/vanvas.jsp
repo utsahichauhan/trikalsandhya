@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,13 +41,33 @@
     <div class="container text-center">
         <h1 class="mb-4">Vanvas Adhyay (Chapters)</h1>
         <div class="box-container">
-            <% for(int i=1; i<=20; i++) { %>
-                <a href="shloka_vanvas.jsp?chapter=<%= i %>" class="text-decoration-none">
-                    <div class="chapter-card shadow-lg">
-                        अध्याय: <%= i %>
-                    </div>
-                </a>
-            <% } %>
+            <%
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/trikalsandhya", "root", ""
+                    );
+                    PreparedStatement ps = con.prepareStatement(
+                        "SELECT DISTINCT adhyay_number FROM shlokas WHERE category = 'Vanvas' ORDER BY adhyay_number"
+                    );
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                        int adhyay = rs.getInt("adhyay_number");
+            %>
+            <a href="shloka_vanvas.jsp?category=vanvas&adhyay=<%= adhyay %>" ...>
+                <div class="chapter-card shadow-lg">
+                                अध्याय: <%= adhyay %>
+                            </div>
+                        </a>
+            <%
+                    }
+                    rs.close();
+                    ps.close();
+                    con.close();
+                } catch (Exception e) {
+                    out.println("<div class='text-danger'>Error loading Adhyays: " + e.getMessage() + "</div>");
+                }
+            %>
         </div>
     </div>
 

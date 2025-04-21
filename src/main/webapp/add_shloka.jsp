@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
-    
+
     <style>
         .container-fluid {
             display: flex;
@@ -30,6 +31,19 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
+
+    <script>
+        function fetchNextShlokNumber() {
+            var adhyay = document.getElementById("adhyaySelect").value;
+            fetch("GetNextShlokNumber.jsp?adhyay=" + adhyay)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("shlokNumber").value = data.trim();
+                });
+        }
+
+        window.onload = fetchNextShlokNumber; // Call on page load
+    </script>
 </head>
 <body>
     <div class="container-fluid">
@@ -45,7 +59,7 @@
                 <form action="AddGeetaShlokServlet" method="post">
                     <div class="mb-3">
                         <label class="form-label">Select Adhyay (Chapter):</label>
-                        <select name="adhyay" class="form-select" required>
+                        <select id="adhyaySelect" name="adhyay" class="form-select" onchange="fetchNextShlokNumber()" required>
                             <% for(int i = 1; i <= 18; i++) { %>
                                 <option value="<%= i %>">Adhyay <%= i %></option>
                             <% } %>
@@ -54,7 +68,7 @@
                     
                     <div class="mb-3">
                         <label class="form-label">Shlok Number:</label>
-                        <input type="number" name="shlok_number" class="form-control" required />
+                        <input type="number" id="shlokNumber" name="shlok_number" class="form-control" required />
                     </div>
                     
                     <div class="mb-3">

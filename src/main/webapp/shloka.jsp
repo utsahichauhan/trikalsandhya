@@ -51,31 +51,46 @@
 
     <div class="container shloka-container">
         <%
+            String category = "Ram-Seeta Milan";
             int chapter = 1;
-            if (request.getParameter("chapter") != null) {
-                chapter = Integer.parseInt(request.getParameter("chapter"));
+
+            if (request.getParameter("category") != null) {
+                category = request.getParameter("category");
+            }
+            if (request.getParameter("adhyay") != null) {
+                chapter = Integer.parseInt(request.getParameter("adhyay"));
             }
         %>
-        <h2>📜 Shlokas from Adhyay <%= chapter %></h2>
+        <h2>📜 Shlokas from '<%= category %>' - Adhyay <%= chapter %></h2>
 
         <%
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trikalsandhya", "root", "");
 
-                String query = "SELECT * FROM shlokas WHERE category='Ram-Seeta Milan' AND adhyay_number=?";
+                String query = "SELECT * FROM shlokas WHERE category=? AND adhyay_number=?";
                 PreparedStatement ps = con.prepareStatement(query);
-                ps.setInt(1, chapter);
+                ps.setString(1, category);
+                ps.setInt(2, chapter);
                 ResultSet rs = ps.executeQuery();
 
+                boolean hasShlokas = false;
                 while (rs.next()) {
+                    hasShlokas = true;
         %>
-                <p class="shloka-text"><%= rs.getString("shlok") %></p>
-                <p class="translation-text"><strong>Gujarati:</strong> <%= rs.getString("translation_gujarati") %></p>
-                <p class="meaning-text"><strong>English:</strong> <%= rs.getString("translation_english") %></p>
-                <hr>
+                    <p class="shloka-text"><%= rs.getString("shlok") %></p>
+                    <p class="translation-text"><strong>Gujarati:</strong> <%= rs.getString("translation_gujarati") %></p>
+                    <p class="meaning-text"><strong>English:</strong> <%= rs.getString("translation_english") %></p>
+                    <hr>
         <%
                 }
+
+                if (!hasShlokas) {
+        %>
+                    <p class="text-light">No shlokas found for this Adhyay.</p>
+        <%
+                }
+
                 ps.close();
                 con.close();
             } catch (Exception e) {
@@ -88,11 +103,11 @@
 
         <!-- Previous and Next Buttons -->
         <div class="d-flex justify-content-between mt-4">
-            <a href="shloka.jsp?chapter=<%= previousChapter %>" 
+            <a href="shloka.jsp?category=<%= category %>&adhyay=<%= previousChapter %>" 
                class="btn btn-warning btn-nav <%= (chapter <= 1) ? "disabled" : "" %>">
                ⬅️ Previous
             </a>
-            <a href="shloka.jsp?chapter=<%= nextChapter %>" 
+            <a href="shloka.jsp?category=<%= category %>&adhyay=<%= nextChapter %>" 
                class="btn btn-success btn-nav">
                Next ➡️
             </a>
